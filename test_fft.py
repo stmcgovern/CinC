@@ -7,8 +7,10 @@ import matplotlib.pyplot as plt
 
 
 #read in the data file (4 signals(t) with 60000 data points)
-fi_1 = open('./set-a-text/a02.csv', 'r')
+fi_1 = open('./set-a-text/a03.csv', 'r')
 fi_2 = open('./set-a-text/a01.fqrs.txt', 'r')
+
+#TODO: maybe use csv module... 
 
 ti=[]   #time
 sig1=[] #signal 1
@@ -74,47 +76,22 @@ def abs_sq(signal):
 	temp=np.absolute(fs)
 	return np.square(temp)
 
-def plot_power_spec(signal, signal3,signal4):
-	s_w12=abs_sq(signal)
-	
-	=np.fft.fft(signal)
-	b=np.absolute(s_w1)
-	s_w12=np.square(b)
+def plot_power_spec(signal1,signal2,signal3,signal4):
+	s_w12=abs_sq(signal1)
+	s_w22=abs_sq(signal2)
+	s_w32=abs_sq(signal3)
+	s_w42=abs_sq(signal4)
 
-	s_w2=np.fft.fft(signal3)
-	b=np.absolute(s_w2)
-	s_w22=np.square(b)
-	s_w3=np.fft.fft(signal4)
-	b=np.absolute(s_w3)
-	s_w32=np.square(b)
-	print x[0], signal[0]
+	#print x[0], signal[0]
 	plt.xlim((0,1000))
 	plt.plot(x, s_w12)
-	#plt.plot(x, signal2)
 	plt.plot(x, s_w22)
 	plt.plot(x, s_w32)
+	plt.plot(x, s_w42)
 	plt.show()
 
 
-plot_power_spec(s1,s3, s4)
+plot_power_spec(s1,s2,s3, s4)
 
-#g=np.sin(x)
-
-# fs1=np.fft.rfft(s1)
-# print "sdf",type(fs1)
-# fs2=np.fft.fft(s2)
-# #print type(fs2)
-# fs3=np.fft.rfft(s3)
-# print type(fs3)
-# fs4=np.fft.rfft(s4)
-# print type(fs4)
-
-# plt.plot(fs3)
-# plt.plot(fs1)
-# plt.plot(fs4)
-# #print type(fs2)
-# plt.xlim((0,1000))
-# #plt.plot (fs2)
-# plt.show()
 
 
