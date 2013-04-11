@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 #read in the data file (4 signals(t) with 60000 data points)
 fi_1 = open('./set-a-text/a03.csv', 'r')
-fi_2 = open('./set-a-text/a01.fqrs.txt', 'r')
+fi_2 = open('./set-a-text/a03.fqrs.txt', 'r')
 
 #TODO: maybe use csv module... 
 
@@ -51,13 +51,28 @@ s2=np.array(sig2, dtype=float)
 s3=np.array(sig3,dtype=float)
 s4=np.array(sig4,dtype=float)
 
+
+x = []
+y = []
+
+for ms, v  in enumerate(s1):
+
+	if  v> 40:
+		#plt.scatter(ms,v)
+		x.append(ms)
+		y.append(v)
+
+#plt.show()
+plt.scatter(x,y)
+
+print float(len(x))
+
 # print "t", type(t), t.shape, t.dtype
 # print "s1", type(s1), s1.shape, s1.dtype
 # print "s2", type(s2), s2.shape, s2.dtype
 # print "s3", type(s3), s3.shape, s3.dtype
 # print "s4", type(s4), s4.shape, s4.dtype
 # print "s5", type(bb), bb.shape, bb.dtype
-
 
 #do something
 
@@ -90,8 +105,9 @@ def plot_power_spec(signal1,signal2,signal3,signal4):
 	plt.plot(x, s_w42)
 	plt.show()
 
-
-plot_power_spec(s1,s2,s3, s4)
+#plt.plot(t,s1)
+plt.show()
+#plot_power_spec(s1,s2,s3, s4)
 
 
 
