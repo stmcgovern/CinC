@@ -106,25 +106,7 @@ def freq_2_plot(sig):
 
 #5. get a list of peak frequencies
 
-
-power=abs_sq(sig1)
-
-#arbitrarily cut it off at 400
-power_slice=power[:400]
-#print np.ptp(power)
-#peaks= ss.find_peaks_cwt(power,np.arange(1,10))
-#peaks=ss.argrelmax(power)
-peaks=ss.argrelmax(power_slice)
-x=peaks[0].shape
-print peaks
-for p in peaks:
-	plt.scatter(p, power[p])
-
-
-#plt.scatter(xrange(x[0]),peaks[0])
-#plt.show()
-
-#return a list of frequencies in descending order by amplitude(first 400)
+#return a list of frequencies in descending order by amplitude(strongest 400)
 
 def freq_rank(sig):
 	power=abs_sq(sig)
@@ -150,6 +132,10 @@ def freq_rank(sig):
 
 freqs_s1=freq_rank(sig1)
 print freqs_s1
+power=abs_sq(sig1)
+print "power"
+for i,f in enumerate(freqs_s1):
+	print i, power[f]
 
 power=abs_sq(sig1)
 plt.scatter(xrange(100),power[freqs_s1])
